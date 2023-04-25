@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-const navigation = {
+// placeholder links for pages
+/* const navigation = {
     links: [
         {name: "Home", to: "/home" },
         {name: "Pantries", to: "/pantries" },
@@ -9,11 +10,11 @@ const navigation = {
         {name: "About", to: "/about" }
 
     ]
-}
+} */
 function Header(){
     return(
         <div>
-            <Navbar links={navigation.links}/>
+            <Navbar/>
             {/* insert navbar
             insert logo
             insert search  */}
