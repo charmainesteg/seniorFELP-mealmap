@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import './Header.css';
 
 // placeholder links for pages
 /* const navigation = {
@@ -11,15 +12,13 @@ import Navbar from "./Navbar";
 
     ]
 } */
-function Header(){
+export default function Header(){
     return(
-        <div>
+        <div className="container">
             <Navbar/>
             {/* insert navbar
             insert logo
             insert search  */}
         </div>
     )
-}
-
-export default Header; 
+} 

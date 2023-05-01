@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBar() {
+export default function NavBar() {
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg">
         <Container fluid>
           <Navbar.Brand href="#">Meal Map</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -36,5 +36,3 @@ function NavBar() {
       </Navbar>
     );
   }
-
-export default NavBar;

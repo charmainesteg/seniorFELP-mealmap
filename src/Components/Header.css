@@ -1,0 +1,9 @@
+.container{
+    margin: 0 8rem;
+    width: 100%;
+}
+
+.container .navbar{
+    background: none;
+}
+
