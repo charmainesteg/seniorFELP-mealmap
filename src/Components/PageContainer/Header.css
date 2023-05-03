@@ -18,11 +18,11 @@
    color: rgb(238, 56, 56);
 }
 .navText{
- color: #093266;
+ color: #093266 !important;
 }
 
 .navText:hover{
-    opacity:.8;
+    opacity:.8 !important;
    }
 
 .searchButton{
