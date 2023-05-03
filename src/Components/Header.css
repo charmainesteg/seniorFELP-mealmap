@@ -1,0 +1,44 @@
+.navbarContainer{
+    margin: 0 1rem;
+    background: #ffff;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    max-width: 100%;
+}
+
+.brandName h3{
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 0.5rem 0;
+    color: #093266;
+}
+
+.brandName span{
+   color: rgb(238, 56, 56);
+}
+.navText{
+ color: #093266;
+}
+
+.navText:hover{
+    opacity:.8;
+   }
+
+.searchButton{
+    color: rgb(238, 56, 56);
+    border: solid 1px rgb(238, 56, 56);
+    background: #fff;
+    
+}
+
+.searchButton:hover{
+    background: rgb(238, 56, 56);
+    border: solid 1px rgb(238, 56, 56);
+
+    
+}
+
+
+
+
