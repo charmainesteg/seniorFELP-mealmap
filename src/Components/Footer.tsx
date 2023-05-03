@@ -1,7 +1,9 @@
 import React from "react";
 import './Footer.css';
-
-export default function Footer(){
+import { Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { linkurls } from "../constants/linkurls";
+export default function Footer() {
     return (
         <div className="Footer">
             <div className="container">
@@ -10,24 +12,22 @@ export default function Footer(){
                         <a className="navbar-brand" href="/"><h3><span>MEAL</span> Map</h3></a>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo unde nisi vero impedit vitae, ad minima quaerat doloribus veniam odio iure inventore, nobis necessitatibus corrupti beatae. Autem ducimus excepturi voluptates!</p>
                         <div className="footer-icons">
-                        <i className="fa-brands fa-facebook"></i>
-                        <i className="fa-brands fa-square-twitter"></i>
-                        <i className="fa-brands fa-instagram"></i>
-                        <i className="fa-brands fa-tiktok"></i>
+                            <i className="fa-brands fa-facebook"></i>
+                            <i className="fa-brands fa-square-twitter"></i>
+                            <i className="fa-brands fa-instagram"></i>
+                            <i className="fa-brands fa-tiktok"></i>
                         </div>
                     </div>
                     <div className="col-md-6 col-lg-3 col-12 ft-2">
                         <h5>Quick Links</h5>
                         <ul>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">About</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Contact Us</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Resources</a>
-                            </li>
+                            {linkurls.map((item, index) => (
+                                <li className="nav-item" key={item.id}>
+                                    <Nav.Link className="navText"
+                                        as={NavLink}
+                                        to={item.url}>{item.name}</Nav.Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="col-md-6 col-lg-4 col-12 ft-3">
@@ -38,7 +38,7 @@ export default function Footer(){
                     </div>
                 </div>
 
-            </div>
-        </div>
-    )
+            </div >
+        </div >
+    );
 }
