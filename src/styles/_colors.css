@@ -1,0 +1,22 @@
+:root {
+  --pink-50: #ffe2ec;
+  --pink-100: #ffb3c5;
+  --pink-200: #fc839f;
+  --pink-300: #f95278;
+  --pink-400: #f62252;
+  --pink-500: #dd0939;
+  --pink-600: #ad032c;
+  --pink-700: #7c001e;
+  --pink-800: #4d0012;
+  --pink-900: #200005;
+  --blue-50: #e1edff;
+  --blue-100: #b2c8ff;
+  --blue-200: #82a4fd;
+  --blue-300: #527ff9;
+  --blue-400: #225bf6;
+  --blue-500: #0941dd;
+  --blue-600: #0333ad;
+  --blue-700: #00247d;
+  --blue-800: #00164e;
+  --blue-900: #000720;
+}

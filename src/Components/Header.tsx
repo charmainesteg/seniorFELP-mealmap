@@ -1,6 +1,4 @@
-import React from "react";
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -13,7 +11,7 @@ export default function Header() {
     <div>
       {/* A "layout route" is a good place to put markup you want to
           share across all the pages on your site, like navigation. */}
-      <Navbar className="navbarContainer" expand="lg">
+      <Navbar className="navbar-container" expand="lg">
         <Navbar.Brand className="brandName">
           <Nav.Link className="navText" as={NavLink} to="/">
             <h3><span>MEAL</span> Map</h3>

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { linkurls } from "../constants/linkurls";
 export default function Footer() {
     return (
-        <div className="Footer">
+        <footer className="footer">
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-lg-5 col-12 ft-1">
@@ -38,7 +38,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-            </div >
-        </div >
+            </div>
+        </footer >
     );
 }
