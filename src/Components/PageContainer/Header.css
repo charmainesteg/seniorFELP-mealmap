@@ -28,17 +28,10 @@
 .searchButton{
     color: rgb(238, 56, 56);
     border: solid 1px rgb(238, 56, 56);
-    background: #fff;
-    
+    background: #ffffff; 
 }
 
 .searchButton:hover{
     background: rgb(238, 56, 56);
-    border: solid 1px rgb(238, 56, 56);
-
-    
+    border: solid 1px rgb(238, 56, 56);    
 }
-
-
-
-

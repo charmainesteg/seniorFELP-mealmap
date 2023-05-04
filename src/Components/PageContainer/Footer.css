@@ -1,9 +1,8 @@
-.Footer{
+.footer{
     background-color: #093266;
     color: #fff;
     padding: 2rem 0;
     margin: 0 1rem;
-    /* margin-top: 18rem; */
 }
 
 .ft-1 h3{
@@ -36,7 +35,7 @@
     cursor: pointer;
 }
 
-.Footer h5{
+.footer h5{
     color:rgb(238, 56, 56);
     padding: 0.5rem 0
 }
