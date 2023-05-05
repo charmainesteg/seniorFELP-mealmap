@@ -1,0 +1,12 @@
+.homepage-img{
+   padding: 1rem;
+   width: 100vw;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 3em;
+    max-height: 40%;
+    padding: 10px;
+}

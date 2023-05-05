@@ -1,4 +1,4 @@
-.navbarContainer{
+.navbar-container{
     margin: 0 1rem;
     background: #ffff;
     padding: 1rem;
@@ -7,38 +7,35 @@
     max-width: 100%;
 }
 
-.brandName h3{
+.brand-name h3{
     font-weight: 700;
     letter-spacing: 2px;
     padding: 0.5rem 0;
     color: #093266;
 }
 
-.brandName span{
+.brand-name span{
    color: rgb(238, 56, 56);
 }
-.navText{
+.navbar-container .nav-link{
  color: #093266;
 }
 
-.navText:hover{
-    opacity:.8;
+.navbar-container .navbar-nav .nav-link.active {
+    color:rgb(238, 56, 56); 
+}
+
+.navbar-container .nav-link:hover{
+    opacity:.8 ;
    }
 
-.searchButton{
-    color: rgb(238, 56, 56);
-    border: solid 1px rgb(238, 56, 56);
-    background: #fff;
-    
+.search-button{
+    color: rgb(238, 56, 56) !important;
+    border: solid 1px rgb(238, 56, 56) !important;
+    background: #ffffff !important; 
 }
 
-.searchButton:hover{
+.search-button:hover{
     background: rgb(238, 56, 56);
-    border: solid 1px rgb(238, 56, 56);
-
-    
+    border: solid 1px rgb(238, 56, 56);    
 }
-
-
-
-
