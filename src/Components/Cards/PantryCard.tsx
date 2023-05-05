@@ -1,15 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-export default function PantryCard({title,text}: {title:string, text: string}){
+export default function PantryCard({key, title,description, image, pantrylocation, url}: {key: number, title:string, description: string, image: string, pantrylocation: string, url: string}){
     return (
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+        <Card style={{ width: '18rem' }} key={key}>
+          <Card.Img variant="top" src={image} />
           <Card.Body>
             <Card.Title> {title} </Card.Title>
             <Card.Text>
-              {text}
+              {description}
             </Card.Text>
+            <Card.Text>
+              {pantrylocation}
+            </Card.Text>
+            <a href={url}>Find more info here</a>
           </Card.Body>
         </Card>
       );

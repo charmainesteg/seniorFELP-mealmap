@@ -1,12 +1,12 @@
 import React from 'react';
 import {Routes, Route, Router} from "react-router-dom"
 import './App.css';
-import Header from './Components/PageContainer/Header';
-import Footer from './Components/PageContainer/Footer';
-import HomePage from './Components/Pages/HomePage';
-import Pantries from './Components/Pages/Pantries';
-import Resources from './Components/Pages/Resources';
-import About from './Components/Pages/About';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import Pantries from './pages/Pantries';
+import Resources from './pages/Resources';
+import About from './pages/About';
 
 function App() {
   return (

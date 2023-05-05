@@ -6,13 +6,13 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./Header.css";
-import { PageLinks } from "../Constants/PageLinks";
+import { PageLinks } from "../constants/PageLinks";
 
 export default function Header() {
   return (
     <div>
-      <Navbar className="navbarContainer" expand="lg">
-        <Navbar.Brand className="brandName" as={NavLink} to="/">
+      <Navbar className="navbar-container" expand="lg">
+        <Navbar.Brand className="brand-name" as={NavLink} to="/">
           <h3>
             <span>MEAL</span> Map
           </h3>
@@ -37,7 +37,7 @@ export default function Header() {
               className="me-2"
               aria-label="Search"
             />
-            <Button className="searchButton">Search</Button>
+            <Button className="search-button">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
