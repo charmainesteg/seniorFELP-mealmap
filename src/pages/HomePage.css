@@ -6,7 +6,11 @@
     padding: 1rem 0 3rem 0;
     justify-items: center;
     justify-content: space-evenly;
+}
 
+.card{
+    border: none;
+    box-shadow:0 5px 22px 0 rgba(0,0,0,.15);
 }
 
 .card img{
@@ -18,17 +22,21 @@
 }
 
 .card .card-title{
- font-weight: 600;
+ font-weight: 700;
 }
 
 .card a{
     color:#72bf44;
     text-decoration: none;
+    font-weight: 700;
 }
-
+.hero-div{
+    margin: 0 1rem;
+    box-shadow: 1px 1px 15px #093266;
+}
 .hero-header {
 height: 500px;
-width: 100vw;
+width: 100%;
 padding-top: 100px;
 color: white;
 background: linear-gradient(270deg,rgba(6,52,107,0)0,#093266 81%), url("../assets/images/homepageimg.jpeg");
@@ -37,13 +45,20 @@ position: relative;
 }
 
 .hero-header .welcome-text{
-    width: 375px;
-    padding: 0 0 0 6rem;
+   font-weight: 600;
+    padding: 0 0 0 4rem;
+}
+
+.hero-header .tagline{
+    color:#99d6ff;
+    font-weight: 400;
+    padding: 0 0 0 4rem;
+    width: 420px;
     word-wrap: break-word;
 }
 .home-btn-div{
     display: flex;
-    height: 500px;
+    height: 390px;
     justify-content: center;
     align-items: center;
 }
@@ -51,6 +66,8 @@ position: relative;
     color: #ffffff;
     background: #72bf44;
     border: solid 1px #72bf44;
+    border-radius: 25px;
+    box-shadow: 1px 1px 15px #093266;
 }
 
 .hero-header .home-pantry-btn:hover{
@@ -60,5 +77,12 @@ position: relative;
 }
 
 .featured-text{
-    padding: 1rem 0 1rem 2rem;
+    padding: 2rem 0 1rem 2rem;
+    color:#093266;
+    text-align: center;
+}
+
+.home-pantries{
+    background: #f3f2ee;
+    margin: 1rem 1rem 0 1rem;
 }
