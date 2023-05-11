@@ -1,12 +1,70 @@
 .homepage-img{
-   padding: 1rem;
+   padding: 0 1rem 1rem 1rem;
    width: 100vw;
+   position: relative;
 }
 
 .cards{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
     grid-gap: 3em;
     max-height: 40%;
-    padding: 10px;
+    padding: 1rem 0 3rem 0;
+    justify-items: center;
+    justify-content: space-evenly;
+
+}
+
+.card img{
+ height: 200px;
+}
+
+.card .card-body{
+    color: #093266
+}
+
+.card .card-title{
+ font-weight: 600;
+}
+
+.card a{
+    color:#72bf44;
+    text-decoration: none;
+}
+
+.hero-header {
+height: 500px;
+width: 100vw;
+padding-top: 100px;
+color: white;
+background: linear-gradient(270deg,rgba(6,52,107,0)0,#093266 81%), url("../assets/images/homepageimg.jpeg");
+background-position: 80%;
+position: relative;
+}
+
+.hero-header .welcome-text{
+    width: 375px;
+    padding: 0 0 0 6rem;
+    word-wrap: break-word;
+}
+.home-btn-div{
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+.hero-header .home-pantry-btn{
+    color: #ffffff;
+    background: #72bf44;
+    border: solid 1px #72bf44;
+}
+
+.hero-header .home-pantry-btn:hover{
+    color: #093266 ;
+    background: #ffffff;
+    border: #093266; 
+}
+
+.featured-text{
+    padding: 1rem 0 1rem 2rem;
 }

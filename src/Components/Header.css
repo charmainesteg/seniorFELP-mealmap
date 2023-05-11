@@ -1,7 +1,7 @@
 .navbar-container{
     margin: 0 1rem;
     background: #ffff;
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     position: sticky;
     top: 0;
     max-width: 100%;
@@ -22,17 +22,17 @@
 }
 
 .navbar-container .navbar-nav .nav-link.active {
-    color:rgb(238, 56, 56); 
+    color:#72bf44; 
 }
 
 .navbar-container .nav-link:hover{
     opacity:.8 ;
    }
 
-.search-button{
-    color: rgb(238, 56, 56) !important;
-    border: solid 1px rgb(238, 56, 56) !important;
-    background: #ffffff !important; 
+.navbar-container .search-button{
+    color: rgb(238, 56, 56);
+    border: solid 1px rgb(238, 56, 56);
+    background: #ffffff; 
 }
 
 .search-button:hover{
