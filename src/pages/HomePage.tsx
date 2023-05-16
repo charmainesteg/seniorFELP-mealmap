@@ -1,32 +1,43 @@
 import React from "react";
 import PantryCard from "../components/cards/PantryCard";
-import pantryData from "../assets/data/pantries";
+import pantryData from "../assets/data/pantryData";
 import "./HomePage.css";
 import Button from "react-bootstrap/Button";
+import "../components/cards/PantryCard.css"
 
 const HomePage = () => {
   return (
-    <div>
-      <section className="hero-header container">
-        <h1 className="welcome-text">Welcome to Meal Map</h1>
-        <div className="home-btn-div">
-          <Button className="home-pantry-btn">Find More Pantries</Button>
-        </div>
-      </section>
-      <h2 className="featured-text">Featured Pantries</h2>
-      <div className="cards">
-        {pantryData.map((item, index) => (
-          <PantryCard
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            pantrylocation={item.location}
-            url={item.url}
-          />
-        ))}
+    <article className="homepage">
+      <div className="hero-div">
+        <section className="hero-header">
+          <h1 className="welcome-text">Welcome to Meal Map</h1>
+          <h5 className="tagline">
+            Meal Map provides a detailed list of pantries in the metro Atlanta
+            Area and can help you locate pantries near you.
+          </h5>
+          <div className="home-btn-div">
+            <a href="/pantries">
+              <Button className="home-pantry-btn">Find More Pantries</Button>
+            </a>
+          </div>
+        </section>
       </div>
-    </div>
+      <div className="home-pantries">
+        <h2 className="featured-text">Featured Pantries</h2>
+        <div className="cards">
+          {pantryData.map((item, index) => (
+            <PantryCard
+              key={item.id}
+              title={item.title}
+              description=""
+              image={item.image}
+              pantrylocation={item.location}
+              url={item.url}
+            />
+          ))}
+        </div>
+      </div>
+    </article>
   );
 };
 
