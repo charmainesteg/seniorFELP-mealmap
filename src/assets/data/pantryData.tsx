@@ -35,7 +35,7 @@ const pantryData= [
         "id": 5,
         "title": "Hosea Helps",
         "image": "../images/foodpantry5.jpeg",
-        "description":"Families and individuals can visit our warehouse during the week and receive free emergency groceries.",
+        "description":"Families and individuals can visit their warehouse during the week and receive free emergency groceries.",
         "location": "2545 Forrest Hills Dr SW, Atlanta, GA 30315",
         "url": "https://4hosea.org/programs/care-center/"
     },
@@ -43,7 +43,7 @@ const pantryData= [
         "id": 6,
         "title": "Mimi's Pantry",
         "image": "../images/foodpantry6.jpeg",
-        "description":"At Mimi's Pantry, full time students in the Atlanta University Center without a full meal plan receive nonperishable, fresh and frozen food items as often as they need food.",
+        "description":"At Mimi's Pantry, full time students in the Atlanta University Center without a full meal plan receive fresh and frozen food items as often as they need food.",
         "location": "266 Lee Ln SW, Atlanta, Ga 30314",
         "url": "https://4hosea.org/programs/care-center/"
     }

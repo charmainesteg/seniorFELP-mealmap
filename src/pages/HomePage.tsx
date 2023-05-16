@@ -1,8 +1,9 @@
 import React from "react";
 import PantryCard from "../components/cards/PantryCard";
-import pantryData from "../assets/data/pantries";
+import pantryData from "../assets/data/pantryData";
 import "./HomePage.css";
 import Button from "react-bootstrap/Button";
+import "../components/cards/PantryCard.css"
 
 const HomePage = () => {
   return (
@@ -15,7 +16,7 @@ const HomePage = () => {
             Area and can help you locate pantries near you.
           </h5>
           <div className="home-btn-div">
-            <a href="/Pantries">
+            <a href="/pantries">
               <Button className="home-pantry-btn">Find More Pantries</Button>
             </a>
           </div>
@@ -28,7 +29,7 @@ const HomePage = () => {
             <PantryCard
               key={item.id}
               title={item.title}
-              description={item.description}
+              description=""
               image={item.image}
               pantrylocation={item.location}
               url={item.url}

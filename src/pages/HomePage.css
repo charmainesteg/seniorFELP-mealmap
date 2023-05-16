@@ -1,38 +1,6 @@
-.cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-    grid-gap: 3em;
-    max-height: 40%;
-    padding: 1rem 0 3rem 0;
-    justify-items: center;
-    justify-content: space-evenly;
-}
-
-.card{
-    border: none;
-    box-shadow:0 5px 22px 0 rgba(0,0,0,.15);
-}
-
-.card img{
- height: 200px;
-}
-
-.card .card-body{
-    color: #093266
-}
-
-.card .card-title{
- font-weight: 700;
-}
-
-.card a{
-    color:#72bf44;
-    text-decoration: none;
-    font-weight: 700;
-}
 .hero-div{
     margin: 0 1rem;
-    box-shadow: 1px 1px 15px #093266;
+    box-shadow:0 0 5px #093266;
 }
 .hero-header {
 height: 500px;
@@ -45,16 +13,17 @@ position: relative;
 }
 
 .hero-header .welcome-text{
-   font-weight: 600;
-    padding: 0 0 0 4rem;
+    font-weight: 600;
+    padding: 0 0 0 6rem;
 }
 
 .hero-header .tagline{
     color:#99d6ff;
     font-weight: 400;
-    padding: 0 0 0 4rem;
+    padding: 0 0 0 6rem;
     width: 420px;
     word-wrap: break-word;
+    font-size: medium;
 }
 .home-btn-div{
     display: flex;
@@ -63,6 +32,7 @@ position: relative;
     align-items: center;
 }
 .hero-header .home-pantry-btn{
+    font-weight: 500;
     color: #ffffff;
     background: #72bf44;
     border: solid 1px #72bf44;
@@ -77,7 +47,7 @@ position: relative;
 }
 
 .featured-text{
-    padding: 2rem 0 1rem 2rem;
+    padding: 2rem 0;
     color:#093266;
     text-align: center;
 }

@@ -1,7 +1,7 @@
 .navbar-container{
     margin: 0 1rem;
     background: #ffff;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 6rem 0 6rem;
     position: sticky;
     top: 0;
     max-width: 100%;
@@ -39,5 +39,6 @@
 
 .search-button:hover{
     background: rgb(238, 56, 56);
-    border: solid 1px rgb(238, 56, 56);    
+    border: solid 1px rgb(238, 56, 56); 
+    color: #ffffff;   
 }
