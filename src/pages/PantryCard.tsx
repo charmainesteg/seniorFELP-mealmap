@@ -36,7 +36,7 @@ export default function PantryCard(props: PantryCardProps) {
                   </Card.Text>
                   <Card.Link href={item.url}>Find more info here</Card.Link>
                 </Card.Body>
-              </Card>)})
+              </Card>)}
         </div>
       </div>
     </>);

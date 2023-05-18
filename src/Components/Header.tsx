@@ -5,9 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 import { NavLink } from "react-router-dom";
 import { linkurls } from '../constants/linkurls';
-import { useParams } from 'react-router-dom';
+
 export default function Header() {
-  const { pantryID } = useParams();
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to
