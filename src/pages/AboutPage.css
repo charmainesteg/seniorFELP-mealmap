@@ -1,0 +1,11 @@
+header {
+  height: 600px;
+  width: 100vw;
+  background: black;
+  overflow: hidden;
+}
+
+img {
+  object-fit: cover;
+  opacity: 0.4;
+}
