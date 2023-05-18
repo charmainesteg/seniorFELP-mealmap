@@ -11,6 +11,7 @@
 .card {
   border: none;
   box-shadow: 0 5px 22px 0 rgba(0, 0, 0, .15);
+
 }
 
 .card img {
@@ -22,6 +23,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+}
+
+.card .card-address {
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  position: absolute;
+  bottom: 40px;
+  font-weight: bold;
+  width: 90%;
 }
 
 .card .card-title {
@@ -32,4 +43,15 @@
   color: #72bf44;
   text-decoration: none;
   font-weight: 700;
+  transform: translateY(10px);
+  padding-bottom: 20px;
+}
+
+
+.card .card-link:hover {
+  color: #000;
+}
+
+.card .pb-50 {
+  padding-bottom: 50px;
 }

@@ -1,0 +1,46 @@
+.hero-pantry-div {
+  margin: 0 1rem;
+  box-shadow: 0 0 4px #093266;
+}
+
+.hero-pantry-header {
+  height: 350px;
+  width: 100%;
+  padding-top: 100px;
+  color: white;
+  background: linear-gradient(270deg, rgba(6, 52, 107, 0)0, #093266 81%), url("../assets/images/pantrypageimg.jpeg");
+  background-position: -20% 50%;
+  position: relative;
+}
+
+.pantry-header-text {
+  font-weight: 600;
+  padding: 0 0 0 6rem;
+}
+
+.pantry-header-btn-div {
+  display: flex;
+  height: 290px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-pantry-header .pantry-header-btn {
+  font-weight: 500;
+  color: #ffffff;
+  background: #72bf44;
+  border: solid 1px #72bf44;
+  border-radius: 25px;
+  box-shadow: 1px 1px 15px #093266;
+}
+
+.hero-pantry-header .pantry-header-btn:hover {
+  color: #093266;
+  background: #ffffff;
+  border: solid 1px #093266;
+}
+
+.pantries {
+  background: #f3f2ee;
+  margin: 1rem 1rem 0 1rem;
+}

@@ -1,6 +1,6 @@
 import foodpantry1 from '../images/foodpantry1.jpeg';
 import foodpantry2 from '../images/foodpantry2.jpeg';
-const pantryData = [
+export const pantryData = [
   {
     id: 1,
     title: 'Intown Cares',

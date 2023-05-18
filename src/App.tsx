@@ -27,7 +27,7 @@ const router = createBrowserRouter(
         />
         <Route
           path=':pantryID'
-          element={<PantryDetail title='Pantry ID Page' />}
+          element={<PantryDetail />}
         />
       </Route>
       <Route
