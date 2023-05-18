@@ -25,7 +25,7 @@ const HomePage = () => {
       <div className="home-pantries">
         <h2 className="featured-text">Featured Pantries</h2>
         <div className="cards">
-          {pantryData.map((item, index) => (
+          {pantryData.map((item, index) =>  index < 6 && (
             <PantryCard
               key={item.id}
               title={item.title}

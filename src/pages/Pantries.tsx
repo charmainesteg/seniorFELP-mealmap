@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import "./Pantries.css";
 import PantryCard from "../components/cards/PantryCard";

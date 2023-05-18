@@ -1,12 +1,14 @@
-import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom"
 
 export default function PantryCard({key, title,description, image, pantrylocation, url}: {key: number, title:string, description: string, image: string, pantrylocation: string, url: string}){
     return (
         <Card style={{ width: '18rem' }} key={key}>
           <Card.Img variant="top" src={image} />
           <Card.Body>
-            <Card.Title> {title} </Card.Title>
+            <Link to={`${key}`}>
+              <Card.Title> {title} </Card.Title>
+            </Link>
             <Card.Text>
               {description}
             </Card.Text>
