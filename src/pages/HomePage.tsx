@@ -27,7 +27,7 @@ const HomePage = () => {
         <div className="cards">
           {pantryData.map((item, index) =>  index < 6 && (
             <PantryCard
-              key={item.id}
+              id={item.id}
               title={item.title}
               description=""
               image={item.image}

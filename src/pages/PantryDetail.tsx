@@ -4,7 +4,7 @@ import pantryData from "../assets/data/pantryData";
  const PantryDetail = () => {
     const { pantryId } = useParams<{pantryId?:string}>();
     const parsedPantryId = pantryId ? parseInt(pantryId) : undefined;
-    const pantry = pantryData.find((item) => item.id === parsedPantryId)
+    const pantry = pantryData.find((item) => item.id === parsedPantryId);
 
     if (!pantry){
         return <div>Pantry not found </div>;
