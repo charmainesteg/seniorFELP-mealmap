@@ -13,7 +13,7 @@ export default function PantryCard({id, title,description, image, pantrylocation
             <Card.Text>
               {pantrylocation}
             </Card.Text>
-            <Card.Link href={url}>Find more info here</Card.Link>
+            <Card.Link href={url} target="_blank">Find more info here</Card.Link>
           </Card.Body>
         </Card>
       );

@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import "./Pantries.css";
 import PantryCard from "../components/cards/PantryCard";
 import pantryData from "../assets/data/pantryData";
@@ -12,6 +11,7 @@ const Pantries = () => {
                 <div className="cards">
                     {pantryData.map((item, index) => (
                         <PantryCard
+                            key={item.id}
                             id={item.id}
                             title={item.title}
                             description={item.description}

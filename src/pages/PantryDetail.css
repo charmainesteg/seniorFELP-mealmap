@@ -1,0 +1,27 @@
+.pantry-detail-container {
+    background: #f3f2ee;
+    padding: 15px;
+    margin: 1rem 1rem 0 1rem;
+    color:#093266;
+}
+
+.pantry-detail-img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.pantry-detail-url{
+    color:#72bf44;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.box{
+    margin: 15px 0;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 5px; 
+}
+
