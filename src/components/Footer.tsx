@@ -1,7 +1,6 @@
-import React from "react";
 import './Footer.css';
 
-export default function Footer(){
+export default function Footer() {
     return (
         <div className="footer">
             <div className="container">
@@ -10,10 +9,10 @@ export default function Footer(){
                         <a className="navbar-brand" href="/"><h3><span>MEAL</span> Map</h3></a>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo unde nisi vero impedit vitae, ad minima quaerat doloribus veniam odio iure inventore, nobis necessitatibus corrupti beatae. Autem ducimus excepturi voluptates!</p>
                         <div className="footer-icons">
-                        <i className="fa-brands fa-facebook"></i>
-                        <i className="fa-brands fa-square-twitter"></i>
-                        <i className="fa-brands fa-instagram"></i>
-                        <i className="fa-brands fa-tiktok"></i>
+                            <i className="fa-brands fa-facebook"></i>
+                            <i className="fa-brands fa-square-twitter"></i>
+                            <i className="fa-brands fa-instagram"></i>
+                            <i className="fa-brands fa-tiktok"></i>
                         </div>
                     </div>
                     <div className="col-md-6 col-lg-3 col-12 ft-2">
@@ -40,5 +39,5 @@ export default function Footer(){
 
             </div>
         </div>
-    )
+    );
 }

@@ -1,7 +1,7 @@
 import "./Pantries.css";
 import PantryCard from "../components/cards/PantryCard";
 import pantryData from "../assets/data/pantryData";
-import "../components/cards/PantryCard.css"
+import "../components/cards/PantryCard.css";
 
 const Pantries = () => {
     return (

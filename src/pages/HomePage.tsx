@@ -1,9 +1,8 @@
-import React from "react";
 import PantryCard from "../components/cards/PantryCard";
 import pantryData from "../assets/data/pantryData";
 import "./HomePage.css";
 import Button from "react-bootstrap/Button";
-import "../components/cards/PantryCard.css"
+import "../components/cards/PantryCard.css";
 
 const HomePage = () => {
   return (
@@ -25,7 +24,7 @@ const HomePage = () => {
       <div className="home-pantries">
         <h2 className="featured-text">Featured Pantries</h2>
         <div className="cards">
-          {pantryData.map((item, index) =>  index < 6 && (
+          {pantryData.map((item, index) => index < 6 && (
             <PantryCard
               key={item.id}
               id={item.id}

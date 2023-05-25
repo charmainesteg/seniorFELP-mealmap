@@ -15,16 +15,16 @@ import PantryLayout from "./layouts/PantryLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout/>}>
+    <Route path="/" element={<RootLayout />}>
       <Route index element={<HomePage />} />
       <Route path="pantries" element={<PantryLayout />}>
         <Route
-        index
-        element={<Pantries/>} 
+          index
+          element={<Pantries />}
         />
         <Route
           path=":pantryId"
-          element={<PantryDetail/>}
+          element={<PantryDetail />}
         />
       </Route>
       <Route path="resources" element={<Resources />} />
@@ -34,7 +34,7 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
 export default App;

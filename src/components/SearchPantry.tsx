@@ -1,9 +1,8 @@
-import { render } from "@testing-library/react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import SearchList from "./SearchList";
 import "./SearchPantry.css";
+import SearchList from "./SearchList";
 
 function SearchPantry() {
   const [inputText, setInputText] = useState("");
@@ -14,11 +13,11 @@ function SearchPantry() {
   };
 
   const renderSearchList = () => {
-    if(inputText){
-        return <SearchList input={inputText} />;
+    if (inputText) {
+      return <SearchList input={inputText} />;
     }
     return null;
-  }
+  };
 
 
   return (

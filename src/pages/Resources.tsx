@@ -1,7 +1,5 @@
-import React from "react";
-
-const Resources = () =>{
-    return <h1>Resources</h1>
+const Resources = () => {
+    return <h1>Resources</h1>;
 };
 
-export default Resources
+export default Resources;
