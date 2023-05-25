@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,10 +7,19 @@ import "./SearchPantry.css";
 
 function SearchPantry() {
   const [inputText, setInputText] = useState("");
+
   let inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+
+  const renderSearchList = () => {
+    if(inputText){
+        return <SearchList input={inputText} />;
+    }
+    return null;
+  }
+
 
   return (
     <div className="search-pantry-div">
@@ -24,7 +34,7 @@ function SearchPantry() {
         <Button className="search-button">Search</Button>
       </Form>
       <div className="search-list">
-        <SearchList input={inputText} />
+        {renderSearchList()}
       </div>
     </div>
   );
