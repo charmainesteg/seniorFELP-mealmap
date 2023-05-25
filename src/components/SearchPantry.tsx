@@ -30,7 +30,9 @@ function SearchPantry() {
           aria-label="Search"
           onChange={inputHandler}
         />
-        {/* <Button className="search-button">Search</Button> */}
+        <div className="looking-glass">
+        <i className="fa-solid fa-magnifying-glass"></i>
+        </div>
       </Form>
       <div className="search-list">
         {renderSearchList()}

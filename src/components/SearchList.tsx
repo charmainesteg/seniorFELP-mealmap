@@ -12,7 +12,12 @@ function SearchList(props: ListProps) {
       return el.title.toLowerCase().includes(props.input);
     }
   });
+
+  const isNoMatch = filteredData.length === 0;
+
   return (
+    <>
+    {isNoMatch && <p>No pantry found</p>}
     <ul>
       {filteredData.map((item) => (
         <li>
@@ -22,6 +27,8 @@ function SearchList(props: ListProps) {
         </li>
       ))}
     </ul>
+    </>
+    
   );
 }
 
