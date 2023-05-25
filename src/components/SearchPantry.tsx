@@ -11,14 +11,6 @@ function SearchPantry() {
     setInputText(lowerCase);
   };
 
-  const renderSearchList = () => {
-    if (inputText) {
-      return <SearchList input={inputText} />;
-    }
-    return null;
-  };
-
-
   return (
     <div className="search-pantry-div">
       <Form className="d-flex search-form">
@@ -29,12 +21,12 @@ function SearchPantry() {
           aria-label="Search"
           onChange={inputHandler}
         />
-        <div className="looking-glass">
+        {!inputText && <div className="looking-glass">
         <i className="fa-solid fa-magnifying-glass"></i>
-        </div>
+        </div>}
       </Form>
       <div className="search-list">
-        {renderSearchList()}
+        {inputText && <SearchList input={inputText}/>}
       </div>
     </div>
   );

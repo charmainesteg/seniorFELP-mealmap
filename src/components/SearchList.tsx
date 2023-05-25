@@ -4,12 +4,12 @@ export type ListProps = {
   input: string;
 };
 
-function SearchList(props: ListProps) {
+function SearchList({input}: ListProps) {
   const filteredData = pantryData.filter((el) => {
-    if (props.input === "") {
-      return <p>Not found</p>;
+    if (input === "") {
+      return true;
     } else {
-      return el.title.toLowerCase().includes(props.input);
+      return el.title.toLowerCase().includes(input);
     }
   });
 
