@@ -5,7 +5,7 @@ const pantryData= [
         "image": "../images//foodpantry1.jpeg",
         "description":"Pantry distribution currently occurs Tuesdays and Saturdays from 10AM-12PM. All individuals can receive groceries twice a week.",
         "location": "1026 Ponce de Leon Avenue NE, Atlanta, GA 30306",
-        "url": "pantries/1"
+        "url": "https://intowncm.org/what-we-do/foodministries"
     },
     {
         "id": 2,

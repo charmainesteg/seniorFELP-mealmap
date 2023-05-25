@@ -24,9 +24,12 @@
     justify-content: space-between;
 }
 
-.card .card-title{
- font-weight: 700;
-}
+.card .card-title a{
+    font-weight: 700;
+    text-decoration: none;
+    color: #093266;
+    cursor: pointer;
+   }
 
 .card .card-link{
     color:#72bf44;
