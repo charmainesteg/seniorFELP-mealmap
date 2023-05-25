@@ -18,3 +18,16 @@
 .search-pantry-div{
     position: relative;
 }
+
+.searchForm{
+    position: relative;
+}
+
+.looking-glass{
+    color: rgb(238, 56, 56); 
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    font-weight: 900;
+}

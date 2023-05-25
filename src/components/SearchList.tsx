@@ -4,15 +4,20 @@ export type ListProps = {
   input: string;
 };
 
-function SearchList(props: ListProps) {
+function SearchList({input}: ListProps) {
   const filteredData = pantryData.filter((el) => {
-    if (props.input === "") {
-      return el;
+    if (input === "") {
+      return true;
     } else {
-      return el.title.toLowerCase().includes(props.input);
+      return el.title.toLowerCase().includes(input);
     }
   });
+
+  const isNoMatch = filteredData.length === 0;
+
   return (
+    <>
+    {isNoMatch && <p>No pantry found</p>}
     <ul>
       {filteredData.map((item) => (
         <li>
@@ -22,6 +27,8 @@ function SearchList(props: ListProps) {
         </li>
       ))}
     </ul>
+    </>
+    
   );
 }
 
