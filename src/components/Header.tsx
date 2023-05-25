@@ -27,7 +27,7 @@ export default function Header() {
               </Nav.Link>
             ))}
           </Nav>
-          <SearchPantry />
+          <SearchPantry/>
         </Navbar.Collapse>
       </Navbar>
     </div>

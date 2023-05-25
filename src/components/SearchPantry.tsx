@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./SearchPantry.css";
 import SearchList from "./SearchList";
@@ -22,7 +21,7 @@ function SearchPantry() {
 
   return (
     <div className="search-pantry-div">
-      <Form className="d-flex">
+      <Form className="d-flex search-form">
         <Form.Control
           type="search"
           placeholder="Search..."
