@@ -25,12 +25,12 @@ function SearchPantry() {
       <Form className="d-flex">
         <Form.Control
           type="search"
-          placeholder="Search"
+          placeholder="Search..."
           className="me-2"
           aria-label="Search"
           onChange={inputHandler}
         />
-        <Button className="search-button">Search</Button>
+        {/* <Button className="search-button">Search</Button> */}
       </Form>
       <div className="search-list">
         {renderSearchList()}

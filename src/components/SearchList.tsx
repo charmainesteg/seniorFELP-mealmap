@@ -7,7 +7,7 @@ export type ListProps = {
 function SearchList(props: ListProps) {
   const filteredData = pantryData.filter((el) => {
     if (props.input === "") {
-      return el;
+      return <p>Not found</p>;
     } else {
       return el.title.toLowerCase().includes(props.input);
     }
