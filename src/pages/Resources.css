@@ -1,0 +1,27 @@
+.hero-resources-div{
+    margin: 0 1rem;
+    box-shadow: 0 0 4px #093266;
+}
+
+.hero-resources-header {
+    height: 250px;
+    width: 100%;
+    padding-top: 100px;
+    color: white;
+    background: linear-gradient(270deg,rgba(6,52,107,0)0,#093266 81%), url("../assets/images/resourcepageimg.jpeg");
+    background-position: 100% 50%;
+    position: relative;
+    }
+
+.resources-header-text{
+    font-weight: 600;
+    padding: 0 0 0 6rem;
+}
+
+.resource-card{
+    margin: 1rem;
+}
+
+.resource-banner{
+    margin: 1rem;
+}
