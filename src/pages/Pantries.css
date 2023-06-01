@@ -4,12 +4,12 @@
 }
 
 .hero-pantry-header {
-    height: 350px;
+    height: 250px;
     width: 100%;
     padding-top: 100px;
     color: white;
     background: linear-gradient(270deg,rgba(6,52,107,0)0,#093266 81%), url("../assets/images/pantrypageimg.jpeg");
-    background-position: -20% 50%;
+    background-position: 110% 30%;
     position: relative;
     }
 
