@@ -24,4 +24,49 @@
 
 .resource-banner{
     margin: 1rem;
+    padding: 5rem;
+    background-color: #f3f2ee;
+    box-shadow: 0 0 5px #eeece7;
+}
+
+.fa-utensils, .fa-bread-slice, .fa-seedling{
+    font-size: 50px;
+    color: #fff;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    padding: 1.5rem;
+}
+
+.fa-utensils{
+    background: #f0b41a;
+}
+
+.fa-bread-slice{
+    background: #f05839;
+}
+
+.fa-seedling{
+    background: #647BBC;
+}
+
+.resource-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.resource-items h4{
+    color:#093266;
+    padding-top: 0.5rem;
+}
+
+.card-header{
+   color:#093266;
+}
+
+.banner-header{
+    text-align: center;
+    color: #093266;
+    padding-bottom: 2rem;
 }
