@@ -70,3 +70,29 @@
     color: #093266;
     padding-bottom: 2rem;
 }
+
+.additional-resources{
+    margin: 1rem;
+}
+
+.add-resource-item img, .add-resource-item .card{
+    height: 500px;
+    width: 800px;
+}
+
+.add-resource-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.list-group-item a{
+    text-decoration: none;
+    color:#093266;
+}
+
+.add-resource-item .card-header{
+    color: #fff;
+    background-color: #093266;
+}

@@ -1,5 +1,7 @@
 import ResourceCard from "../components/cards/ResourceCard";
 import resourceData from "../assets/data/resourceData";
+import AddResourceCard from "../components/cards/AddResourceCard";
+import addresourceimg from "../assets/images/addresourceimg.jpeg";
 import "./Resources.css";
 
 const Resources = () => {
@@ -27,7 +29,11 @@ const Resources = () => {
         </h3>
         <div className="row">
           <div className="resource-items snap col-sm">
-            <a href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program">
+            <a
+              href="https://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="fa-solid fa-utensils"></i>
             </a>
             <h4>SNAP</h4>
@@ -54,7 +60,14 @@ const Resources = () => {
           </div>
         </div>
       </div>
-      
+      <div className="additional-resources row">
+        <div className="add-resource-item col-sm">
+          <AddResourceCard />
+        </div>
+        <div className="add-resource-item col-sm">
+          <img src={addresourceimg} alt=""></img>
+        </div>
+      </div>
     </div>
   );
 };
