@@ -90,6 +90,7 @@
 .list-group-item a{
     text-decoration: none;
     color:#093266;
+    cursor: pointer;
 }
 
 .add-resource-item .card-header{
