@@ -12,7 +12,7 @@ export type PantryProps = {
 
 export default function PantryCard(props: PantryProps) {
   return (
-    <Card style={{ width: "18rem" }} key={props.id}>
+    <Card style={{ width: "22rem" }} key={props.id}>
       <Card.Img variant="top" src={props.image} />
       <Card.Body>
         <Card.Title>
