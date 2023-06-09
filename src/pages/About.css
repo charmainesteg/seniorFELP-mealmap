@@ -1,0 +1,30 @@
+.about-box {
+  background: wheat;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s, transform 1s;
+  color: blue;
+}
+
+.container-wrapper {
+  position: relative;
+  margin: 75px 1rem 0
+}
+
+
+.animate {
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.red {
+  background-color: red;
+  color: white;
+}
+
+.no-margin {
+  margin-top: 0;
+}
