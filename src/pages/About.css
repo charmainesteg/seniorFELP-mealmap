@@ -33,38 +33,41 @@
     color:#093266;
 }
 
-.about-banner{
-    background-color: #657bbc;
-    width: 100%;
-    height: 400px;
-    padding: 2rem 12rem;
+.container-wrapper{
     position: relative;
-    margin: 0 1rem;
+    margin: 75px 1rem 0;
+}
+
+.blue{
+    background-color: #657bbc;
+    color: white;
 }
 
  .about-box{
-    background-color: #fff;
+    background-color: #f2eee9;
     height: 175px;
     border-radius: 20px;
     text-align: center;
     padding: 1rem;
     color:#093266;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+    width: 700px;
+    margin: 0;
 }
 
-.about-box:first-child {
-    margin-right:20px;
+.about-box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.about-banner .row{
-    width: 1400px;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -40%);
+.animate{
+    transform: translateY(-50%);
+    opacity: 1;
 }
 
-.color-banner{
-    background-color: #f2eee9;
-    height: 200px;
-    margin: 1rem 1rem 0 1rem;
+.no-margin{
+    margin-top: 0;
 }
