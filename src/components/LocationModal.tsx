@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import AddressForm from "./formGroup/FormGroup";
 const LocationModal = () => {
   const [show, setShow] = useState(false);
 
@@ -18,19 +19,53 @@ const LocationModal = () => {
     width: "100%"
   };
   const apiKey = process.env.REACT_APP_API_KEY;
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [address, setAddress] = useState("");
+
+  const [addresses, setAddresses] = useState([
+    { label: 'Address 1', type: 'text', placeholder: 'Address 1', value: '' },
+    { label: 'Address 2', type: 'text', placeholder: 'Address 2', value: '' },
+    { label: 'City', type: 'text', placeholder: 'City', value: '' },
+    { label: 'State', type: 'text', placeholder: 'State', value: '' },
+    { label: 'Zip Code', type: 'text', placeholder: 'Zip Code', value: '' },
+  ]);
 
 
-  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>,
-    setAddress: React.Dispatch<React.SetStateAction<string>>) => {
-    setAddress(e.target.value);
+
+  // const [address1, setAddress1] = useState("");
+  // const [address2, setAddress2] = useState("");
+  // const [city, setCity] = useState("");
+  // const [state, setState] = useState("");
+  // const [zip, setZip] = useState("");
+  // const [address, setAddress] = useState("");
+
+  // const updateAddress = () => {
+  //   let address = address1.trim();
+  //   if (address2.trim() !== "") {
+  //     address += "," + address2.trim();
+  //   };
+  //   address += `, ${city.trim()}, ${state.trim()}, ${zip.trim()}`;
+  //   setAddress(address);
+  // };
+
+  // useEffect(() => {
+  //   updateAddress();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [address1, address2, city, state, zip,]);
+
+
+  // const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>,
+  //   setAddress: React.Dispatch<React.SetStateAction<string>>) => {
+  //   setAddress(e.target.value);
+  // };
+
+  const handleAddressChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedAddresses = [...addresses];
+    updatedAddresses[index].value = e.target.value;
+    setAddresses(updatedAddresses);
   };
 
+  const handleLocate = () => {
+    console.log("Address:", addresses);
+  };
 
   return (
     <>
@@ -46,7 +81,7 @@ const LocationModal = () => {
           <div className="row">
             <div className="col-6 map-col">
               <LoadScript
-                googleMapsApiKey='AIzaSyBKq9rsU60-KrpdwgcLogSpuE951MGFuAc'>
+                googleMapsApiKey={apiKey!}>
                 <GoogleMap
                   mapContainerStyle={mapStyles}
                   zoom={13}
@@ -63,7 +98,17 @@ const LocationModal = () => {
             </div>
             <div className="col-6">
               <Form>
-                <Form.Group className="mb-3" controlId="LocationForm.Address1">
+                {addresses.map((address, index) => (
+                  <AddressForm
+                    key={index}
+                    label={address.label}
+                    type={address.type}
+                    placeholder={address.placeholder}
+                    value={address.value}
+                    onChange={(e) => handleAddressChange(index, e)}
+                  />
+                ))}
+                {/* <Form.Group className="mb-3" controlId="LocationForm.Address1">
                   <Form.Label className="form-label">Address 1</Form.Label>
                   <Form.Control
                     type="address"
@@ -122,7 +167,7 @@ const LocationModal = () => {
                       (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setZip)
                     }
                   />
-                </Form.Group>
+                </Form.Group> */}
 
               </Form>
             </div>
@@ -131,10 +176,15 @@ const LocationModal = () => {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="{show?'secondary':'primary'}"
-            onClick={toggleModal}>{show ? "Close" : "Locate"}</Button>
+          <Button variant="secondary" onClick={toggleModal}>
+            Close
+          </Button>
+          {/* change onclick to locate using api */}
+          <Button variant="primary" onClick={handleLocate}>
+            Locate
+          </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal >
     </>
   );
 };
