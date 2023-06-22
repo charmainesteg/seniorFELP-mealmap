@@ -2,7 +2,8 @@ import { ChangeEvent } from 'react';
 import { Form } from 'react-bootstrap';
 import StateDropdown from './SelectStates';
 
-export type FormControlChangeEvent = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+export type FormControlChangeEvent =
+  ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 
 export interface AddressFormProps {
   label?: string;

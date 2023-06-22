@@ -18,8 +18,8 @@ const LocationModal = () => {
   const [addresses, setAddresses] = useState([
     { label: 'Address 1', type: 'text', placeholder: 'Address 1', value: '' },
     { label: 'Address 2', type: 'text', placeholder: 'Address 2', value: '' },
-    { label: 'City', type: 'text', placeholder: 'City', value: '' },
-    { label: 'State', type: 'select', placeholder: 'State', value: '' },
+    { label: 'City', type: 'text', placeholder: 'City', value: 'Atlanta' },
+    { label: 'State', type: 'select', placeholder: 'State', value: 'Georgia' },
     { label: 'Zip Code', type: 'text', placeholder: 'Zip Code', value: '' },
   ]);
 
