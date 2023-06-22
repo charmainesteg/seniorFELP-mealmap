@@ -17,6 +17,20 @@ const LocationModal = () => {
     height: "100vh",
     width: "100%"
   };
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [address, setAddress] = useState("");
+
+
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>,
+    setAddress: React.Dispatch<React.SetStateAction<string>>) => {
+    setAddress(e.target.value);
+  };
+
 
   return (
     <>
@@ -49,44 +63,64 @@ const LocationModal = () => {
             </div>
             <div className="col-6">
               <Form>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <Form.Label className="form-label">Street 1</Form.Label>
+                <Form.Group className="mb-3" controlId="LocationForm.Address1">
+                  <Form.Label className="form-label">Address 1</Form.Label>
                   <Form.Control
-                    type="street"
-                    placeholder="Street 1"
+                    type="address"
+                    placeholder="Address 1"
                     autoFocus
+                    value={address1}
+                    onChange={
+                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setAddress1)
+                    }
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                  <Form.Label className="form-label">Street 2</Form.Label>
+                <Form.Group className="mb-3" controlId="LocationForm.Address2">
+                  <Form.Label className="form-label">Address 2</Form.Label>
                   <Form.Control
-                    type="street"
-                    placeholder="Street 2"
+                    type="address"
+                    placeholder="Address 2"
                     autoFocus
+                    value={address2}
+                    onChange={
+                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setAddress2)
+                    }
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                <Form.Group className="mb-3" controlId="LocationForm.City">
                   <Form.Label className="form-label">City</Form.Label>
                   <Form.Control
                     type="city"
                     placeholder="City"
                     autoFocus
+                    value={city}
+                    onChange={
+                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setCity)
+                    }
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+                <Form.Group className="mb-3" controlId="LocationForm.State">
                   <Form.Label className="form-label">State</Form.Label>
                   <Form.Control
                     type="state"
                     placeholder="State"
                     autoFocus
+                    value={state}
+                    onChange={
+                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setState)
+                    }
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
+                <Form.Group className="mb-3" controlId="LocationForm.Zip">
                   <Form.Label className="form-label">Zip Code</Form.Label>
                   <Form.Control
                     type="zip"
                     placeholder="Zip Code"
                     autoFocus
+                    value={zip}
+                    onChange={
+                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setZip)
+                    }
                   />
                 </Form.Group>
 
