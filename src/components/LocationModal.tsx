@@ -4,17 +4,22 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
-import AddressForm from "./formGroup/FormGroup";
+import AddressForm, { FormControlChangeEvent } from "./formGroup/FormGroup";
 const LocationModal = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [show, setShow] = useState(false);
-  const [center, setCenter] = useState({ lat: 33.7488, lng: -84.3877 });
+  const [map, setMapOptions] = useState({
+    center: {
+      lat: 33.7488, lng: -84.3877
+    },
+    zoom: 10
+  });
   const [address, setAddress] = useState('');
   const [addresses, setAddresses] = useState([
     { label: 'Address 1', type: 'text', placeholder: 'Address 1', value: '' },
     { label: 'Address 2', type: 'text', placeholder: 'Address 2', value: '' },
     { label: 'City', type: 'text', placeholder: 'City', value: '' },
-    { label: 'State', type: 'text', placeholder: 'State', value: '' },
+    { label: 'State', type: 'select', placeholder: 'State', value: '' },
     { label: 'Zip Code', type: 'text', placeholder: 'Zip Code', value: '' },
   ]);
 
@@ -33,7 +38,10 @@ const LocationModal = () => {
     setShow(prevShow => !prevShow);
   };
 
-  const handleAddressChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddressChange = (
+    index: number,
+    e: FormControlChangeEvent
+  ) => {
     const updatedAddresses = [...addresses];
     updatedAddresses[index].value = e.target.value;
     setAddresses(updatedAddresses);
@@ -52,17 +60,15 @@ const LocationModal = () => {
   useEffect(() => {
     if (isLoaded) {
       const geocoder = new window.google.maps.Geocoder();
-
       geocoder.geocode({ address }, (results, status) => {
-        console.log(results);
         if (status === 'OK' && results) {
           const lat = results[0].geometry.location.lat();
           const lng = results[0].geometry.location.lng();
           const mapOptions = {
             center: { lat, lng },
-            zoom: 12,
+            zoom: 18,
           };
-          setCenter(mapOptions.center);
+          setMapOptions(mapOptions);
         }
       });
     }
@@ -86,9 +92,9 @@ const LocationModal = () => {
               {isLoaded &&
                 <GoogleMap
                   mapContainerStyle={mapStyles}
-                  zoom={15}
-                  center={center}>
-                  <MarkerF position={center} />
+                  zoom={map.zoom}
+                  center={map.center}>
+                  <MarkerF position={map.center} />
                 </GoogleMap>
               }
             </div>
