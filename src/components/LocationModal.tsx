@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import AddressForm from "./formGroup/FormGroup";
 const LocationModal = () => {
   const [show, setShow] = useState(false);
@@ -28,35 +28,6 @@ const LocationModal = () => {
     { label: 'Zip Code', type: 'text', placeholder: 'Zip Code', value: '' },
   ]);
 
-
-
-  // const [address1, setAddress1] = useState("");
-  // const [address2, setAddress2] = useState("");
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
-  // const [zip, setZip] = useState("");
-  // const [address, setAddress] = useState("");
-
-  // const updateAddress = () => {
-  //   let address = address1.trim();
-  //   if (address2.trim() !== "") {
-  //     address += "," + address2.trim();
-  //   };
-  //   address += `, ${city.trim()}, ${state.trim()}, ${zip.trim()}`;
-  //   setAddress(address);
-  // };
-
-  // useEffect(() => {
-  //   updateAddress();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [address1, address2, city, state, zip,]);
-
-
-  // const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>,
-  //   setAddress: React.Dispatch<React.SetStateAction<string>>) => {
-  //   setAddress(e.target.value);
-  // };
-
   const handleAddressChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedAddresses = [...addresses];
     updatedAddresses[index].value = e.target.value;
@@ -64,8 +35,24 @@ const LocationModal = () => {
   };
 
   const handleLocate = () => {
-    console.log("Address:", addresses);
+    let addressSting = '';
+    for (const address of addresses) {
+      if (address !== null) { addressSting += (address.value + ' '); }
+    }
+    console.log(addressSting);
   };
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    version: 'weekly',
+    googleMapsApiKey: apiKey!
+  });
+
+  const [map, setMap] = useState(null);
+
+  const onLoad = useCallback(function callback(map: any) {
+    setMap(map);
+  }, []);
 
   return (
     <>
@@ -80,21 +67,14 @@ const LocationModal = () => {
         <Modal.Body className="modal-body">
           <div className="row">
             <div className="col-6 map-col">
-              <LoadScript
-                googleMapsApiKey={apiKey!}>
+              {isLoaded &&
                 <GoogleMap
                   mapContainerStyle={mapStyles}
                   zoom={13}
                   center={center}
+                  onLoad={onLoad}
                 />
-              </LoadScript>
-              {/* <iframe title="googlemap"
-                className="googlemap"
-                loading="lazy"
-                allowFullScreen
-                sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-                src="https://www.google.com/maps/embed/v1/view?zoom=11&center=33.7488%2C-84.3877&key=AIzaSyBKq9rsU60-KrpdwgcLogSpuE951MGFuAc">
-              </iframe> */}
+              }
             </div>
             <div className="col-6">
               <Form>
@@ -108,72 +88,9 @@ const LocationModal = () => {
                     onChange={(e) => handleAddressChange(index, e)}
                   />
                 ))}
-                {/* <Form.Group className="mb-3" controlId="LocationForm.Address1">
-                  <Form.Label className="form-label">Address 1</Form.Label>
-                  <Form.Control
-                    type="address"
-                    placeholder="Address 1"
-                    autoFocus
-                    value={address1}
-                    onChange={
-                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setAddress1)
-                    }
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="LocationForm.Address2">
-                  <Form.Label className="form-label">Address 2</Form.Label>
-                  <Form.Control
-                    type="address"
-                    placeholder="Address 2"
-                    autoFocus
-                    value={address2}
-                    onChange={
-                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setAddress2)
-                    }
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="LocationForm.City">
-                  <Form.Label className="form-label">City</Form.Label>
-                  <Form.Control
-                    type="city"
-                    placeholder="City"
-                    autoFocus
-                    value={city}
-                    onChange={
-                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setCity)
-                    }
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="LocationForm.State">
-                  <Form.Label className="form-label">State</Form.Label>
-                  <Form.Control
-                    type="state"
-                    placeholder="State"
-                    autoFocus
-                    value={state}
-                    onChange={
-                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setState)
-                    }
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="LocationForm.Zip">
-                  <Form.Label className="form-label">Zip Code</Form.Label>
-                  <Form.Control
-                    type="zip"
-                    placeholder="Zip Code"
-                    autoFocus
-                    value={zip}
-                    onChange={
-                      (e: React.ChangeEvent<HTMLInputElement>) => handleAddressChange(e, setZip)
-                    }
-                  />
-                </Form.Group> */}
-
               </Form>
             </div>
-
           </div>
-
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={toggleModal}>
