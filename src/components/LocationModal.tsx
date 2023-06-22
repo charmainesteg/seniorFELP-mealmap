@@ -1,25 +1,15 @@
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import AddressForm from "./formGroup/FormGroup";
 const LocationModal = () => {
-  const [show, setShow] = useState(false);
-
-  const toggleModal = () => {
-    setShow(prevShow => !prevShow);
-  };
-
-  const center = { lat: 33.7488, lng: -84.3877 };
-
-  const mapStyles = {
-    height: "100vh",
-    width: "100%"
-  };
   const apiKey = process.env.REACT_APP_API_KEY;
-
+  const [show, setShow] = useState(false);
+  const [center, setCenter] = useState({ lat: 33.7488, lng: -84.3877 });
+  const [address, setAddress] = useState('');
   const [addresses, setAddresses] = useState([
     { label: 'Address 1', type: 'text', placeholder: 'Address 1', value: '' },
     { label: 'Address 2', type: 'text', placeholder: 'Address 2', value: '' },
@@ -28,18 +18,9 @@ const LocationModal = () => {
     { label: 'Zip Code', type: 'text', placeholder: 'Zip Code', value: '' },
   ]);
 
-  const handleAddressChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
-    const updatedAddresses = [...addresses];
-    updatedAddresses[index].value = e.target.value;
-    setAddresses(updatedAddresses);
-  };
-
-  const handleLocate = () => {
-    let addressSting = '';
-    for (const address of addresses) {
-      if (address !== null) { addressSting += (address.value + ' '); }
-    }
-    console.log(addressSting);
+  const mapStyles = {
+    height: "50vh",
+    width: "100%"
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -48,19 +29,54 @@ const LocationModal = () => {
     googleMapsApiKey: apiKey!
   });
 
-  const [map, setMap] = useState(null);
+  const toggleModal = () => {
+    setShow(prevShow => !prevShow);
+  };
 
-  const onLoad = useCallback(function callback(map: any) {
-    setMap(map);
-  }, []);
+  const handleAddressChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedAddresses = [...addresses];
+    updatedAddresses[index].value = e.target.value;
+    setAddresses(updatedAddresses);
+  };
+
+  const handleLocate = () => {
+    let addressString = '';
+    for (const address of addresses) {
+      if (address.value !== '') {
+        addressString += `${address.value} `;
+      }
+    }
+    setAddress(addressString.trim());
+  };
+
+  useEffect(() => {
+    if (isLoaded) {
+      const geocoder = new window.google.maps.Geocoder();
+
+      geocoder.geocode({ address }, (results, status) => {
+        console.log(results);
+        if (status === 'OK' && results) {
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          const mapOptions = {
+            center: { lat, lng },
+            zoom: 12,
+          };
+          setCenter(mapOptions.center);
+        }
+      });
+    }
+  }, [isLoaded, address]);
+
+  const isAnyAddressEmpty = addresses.filter(address => address.value === ''
+    && address.label !== 'Address 2').length > 0;
 
   return (
     <>
       <Button variant="primary" onClick={toggleModal} className="pantry-header-btn">
         Locate Pantries Nearby
       </Button>
-
-      <Modal show={show} size="xl" className="modal">
+      <Modal show={show} size="xl" className="modal" onHide={toggleModal}>
         <Modal.Header closeButton className="modal-header">
           <Modal.Title>Find Pantries Nearby </Modal.Title>
         </Modal.Header>
@@ -70,21 +86,21 @@ const LocationModal = () => {
               {isLoaded &&
                 <GoogleMap
                   mapContainerStyle={mapStyles}
-                  zoom={13}
-                  center={center}
-                  onLoad={onLoad}
-                />
+                  zoom={15}
+                  center={center}>
+                  <MarkerF position={center} />
+                </GoogleMap>
               }
             </div>
             <div className="col-6">
               <Form>
-                {addresses.map((address, index) => (
+                {addresses.map(({ label, placeholder, type, value }, index) => (
                   <AddressForm
                     key={index}
-                    label={address.label}
-                    type={address.type}
-                    placeholder={address.placeholder}
-                    value={address.value}
+                    label={label}
+                    type={type}
+                    placeholder={placeholder}
+                    value={value}
                     onChange={(e) => handleAddressChange(index, e)}
                   />
                 ))}
@@ -96,8 +112,7 @@ const LocationModal = () => {
           <Button variant="secondary" onClick={toggleModal}>
             Close
           </Button>
-          {/* change onclick to locate using api */}
-          <Button variant="primary" onClick={handleLocate}>
+          <Button variant="primary" onClick={handleLocate} disabled={isAnyAddressEmpty}>
             Locate
           </Button>
         </Modal.Footer>
