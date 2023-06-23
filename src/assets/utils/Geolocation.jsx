@@ -21,13 +21,6 @@ const getGeolocation = async (address, i) => {
   }
 };
 export default getGeolocation;
-// what we need to get to use DestinationMetrix
-// const homeLocation = { lat: 37.7749, lng: -122.4194 }; // Example home location
-// const destinations = [
-//   { lat: 37.7833, lng: -122.4167 }, // Example destination 1
-//   { lat: 37.7966, lng: -122.398 }, // Example destination 2
-//   // Add more destinations as needed
-// ];
 
 // import axios from 'axios';
 
@@ -66,6 +59,14 @@ export default getGeolocation;
 // };
 
 // export default getClosestLocations;
+
+// what we need to get to use DestinationMetrix
+// const homeLocation = { lat: 37.7749, lng: -122.4194 }; // Example home location
+// const destinations = [
+//   { lat: 37.7833, lng: -122.4167 }, // Example destination 1
+//   { lat: 37.7966, lng: -122.398 }, // Example destination 2
+//   // Add more destinations as needed
+// ];
 
 // const MapComponent = withGoogleMap(({ homeLocation, destinations }) => {
 //   const handleDistanceMatrix = (response, status) => {
