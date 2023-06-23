@@ -1,10 +1,6 @@
 import { Form } from "react-bootstrap";
 import { AddressFormProps } from "./FormGroup";
 import { stateOptions } from "../../constants/States";
-export interface AddressProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-};
 
 const StateDropdown = ({
   value,

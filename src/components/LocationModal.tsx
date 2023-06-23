@@ -5,9 +5,26 @@ import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import AddressForm, { FormControlChangeEvent } from "./formGroup/FormGroup";
+import pantryData from "../assets/data/pantryData";
+import getGeolocation from "../assets/utils/Geolocation";
+
+
+// const pantryLocations = pantryData.map((pantry) => pantry.location);
+interface Location {
+  id?: number,
+  title?: string,
+  image?: string,
+  description?: string,
+  location: any,
+  url?: string,
+  hours?: string,
+  additionalDetails?: string;
+}
 const LocationModal = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [show, setShow] = useState(false);
+  const [homeAddress, setHomeAddress] = useState({});
+  const [pantries, setPantries] = useState([{}]);
   const [map, setMapOptions] = useState({
     center: {
       lat: 33.7488, lng: -84.3877
@@ -36,6 +53,18 @@ const LocationModal = () => {
 
   const toggleModal = () => {
     setShow(prevShow => !prevShow);
+    // const clearedAddresses = addresses.map(address => ({
+    //   ...address,
+    //   value: ''
+    // }));
+    // setAddresses(clearedAddresses);
+
+    // setMapOptions({
+    //   center: {
+    //     lat: 33.7488, lng: -84.3877
+    //   },
+    //   zoom: 10
+    // });
   };
 
   const handleAddressChange = (
@@ -55,24 +84,37 @@ const LocationModal = () => {
       }
     }
     setAddress(addressString.trim());
+    getGeolocation(addressString.trim(), 'home').then((geolocation) => {
+      if (geolocation?.home) {
+        setHomeAddress(geolocation?.home);
+      }
+    });
+    pantryData.map((pantry) => getGeolocation(pantry.location, 'all')
+      .then((geolocation) => {
+        if (geolocation?.pantries) {
+          setPantries(geolocation?.pantries);
+        }
+      }));
   };
 
   useEffect(() => {
     if (isLoaded) {
-      const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address }, (results, status) => {
-        if (status === 'OK' && results) {
-          const lat = results[0].geometry.location.lat();
-          const lng = results[0].geometry.location.lng();
-          const mapOptions = {
-            center: { lat, lng },
-            zoom: 18,
-          };
-          setMapOptions(mapOptions);
-        }
-      });
+      // Iterate over your pantryData array and retrieve locations;
+      // const geocoder = new window.google.maps.Geocoder();
+      // geocoder.geocode({ address }, (results, status) => {
+      //   if (status === 'OK' && results) {
+      //     const lat = results[0].geometry.location.lat();
+      //     const lng = results[0].geometry.location.lng();
+      //     const mapOptions = {
+      //       center: { lat, lng },
+      //       zoom: 18,
+      //     };
+      //     setMapOptions(mapOptions);
+      //   }
+      // });
     }
-  }, [isLoaded, address]);
+
+  }, [isLoaded, address, pantries, homeAddress]);
 
   const isAnyAddressEmpty = addresses.filter(address => address.value === ''
     && address.label !== 'Address 2').length > 0;
@@ -128,3 +170,4 @@ const LocationModal = () => {
 };
 
 export default LocationModal;
+
