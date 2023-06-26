@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "./LocationModal.css";
-import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
 import AddressForm, { FormControlChangeEvent } from "./formGroup/FormGroup";
 import pantryData from "../assets/data/pantryData";
-import getGeolocation from "../assets/utils/Geolocation";
+import getGeolocation from "../assets/utils.js/Geolocation";
+import MapComponent from "./formGroup/MapComponent";
 
 
 // const pantryLocations = pantryData.map((pantry) => pantry.location);
@@ -23,8 +24,8 @@ interface Location {
 const LocationModal = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [show, setShow] = useState(false);
-  const [homeAddress, setHomeAddress] = useState({});
-  const [pantries, setPantries] = useState([{}]);
+  const [geoAddress, setGeoAddress] = useState<google.maps.LatLngLiteral>();
+  const [geoPantries, setGeoPantries] = useState<google.maps.LatLngLiteral[]>([]);
   const [map, setMapOptions] = useState({
     center: {
       lat: 33.7488, lng: -84.3877
@@ -84,41 +85,58 @@ const LocationModal = () => {
       }
     }
     setAddress(addressString.trim());
-    getGeolocation(addressString.trim(), 'home').then((geolocation) => {
-      if (geolocation?.home) {
-        setHomeAddress(geolocation?.home);
-      }
-    });
-    pantryData.map((pantry) => getGeolocation(pantry.location, 'all')
+    console.log(addressString.trim());
+    getGeolocation(addressString.trim(), 'home')
       .then((geolocation) => {
-        if (geolocation?.pantries) {
-          setPantries(geolocation?.pantries);
+        if (geolocation && geolocation.home) {
+          console.log(geolocation.home);
+          setGeoAddress(geolocation.home as google.maps.LatLngLiteral | undefined);
         }
-      }));
+      });
+
+    const pantryLocations = pantryData.map((pantry) => {
+      return getGeolocation(pantry.location, 'all')
+        .then((geolocation) => {
+          if (geolocation && geolocation.pantries) {
+            return geolocation.pantries;
+          }
+        });
+    });
+    Promise.all(pantryLocations).then((values) => {
+      console.log(values, Array.isArray(values));
+      setGeoPantries(values.filter((item): item is google.maps.LatLngLiteral => item !== undefined));
+
+    });
+
   };
 
-  useEffect(() => {
-    if (isLoaded) {
-      // Iterate over your pantryData array and retrieve locations;
-      // const geocoder = new window.google.maps.Geocoder();
-      // geocoder.geocode({ address }, (results, status) => {
-      //   if (status === 'OK' && results) {
-      //     const lat = results[0].geometry.location.lat();
-      //     const lng = results[0].geometry.location.lng();
-      //     const mapOptions = {
-      //       center: { lat, lng },
-      //       zoom: 18,
-      //     };
-      //     setMapOptions(mapOptions);
-      //   }
-      // });
-    }
+  // useEffect(() => {
+  //   console.log(geoAddress);
+  //   console.log(geoPantries);
+  // }, [geoPantries, geoAddress]);
 
-  }, [isLoaded, address, pantries, homeAddress]);
+  //useEffect(() => {
+  //  if (isLoaded) {
+  //     // Iterate over your pantryData array and retrieve locations;
+  //     // const geocoder = new window.google.maps.Geocoder();
+  //     // geocoder.geocode({ address }, (results, status) => {
+  //     //   if (status === 'OK' && results) {
+  //     //     const lat = results[0].geometry.location.lat();
+  //     //     const lng = results[0].geometry.location.lng();
+  //     //     const mapOptions = {
+  //     //       center: { lat, lng },
+  //     //       zoom: 18,
+  //     //     };
+  //     //     setMapOptions(mapOptions);
+  //     //   }
+  //     // });
+  //   }
+
+  // }, [isLoaded]);
 
   const isAnyAddressEmpty = addresses.filter(address => address.value === ''
     && address.label !== 'Address 2').length > 0;
-
+  console.log(geoAddress);
   return (
     <>
       <Button variant="primary" onClick={toggleModal} className="pantry-header-btn">
@@ -132,12 +150,18 @@ const LocationModal = () => {
           <div className="row">
             <div className="col-6 map-col">
               {isLoaded &&
-                <GoogleMap
-                  mapContainerStyle={mapStyles}
-                  zoom={map.zoom}
-                  center={map.center}>
-                  <MarkerF position={map.center} />
-                </GoogleMap>
+                <MapComponent
+                  homeLocation={geoAddress ? geoAddress : { lat: 33.7488, lng: -84.3877 }}
+                  destinations={geoPantries}
+                  containerElement={mapStyles}
+                  mapElement={<div style={{ height: '100%' }} />}
+                />
+                // <GoogleMap
+                //   mapContainerStyle={mapStyles}
+                //   zoom={map.zoom}
+                //   center={map.center}>
+                //   <MarkerF position={map.center} />
+                // </GoogleMap>
               }
             </div>
             <div className="col-6">

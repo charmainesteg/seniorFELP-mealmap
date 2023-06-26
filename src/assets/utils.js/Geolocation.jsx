@@ -1,4 +1,6 @@
 const getGeolocation = async (address, i) => {
+  let home = {};
+  const pantries = {};
   try {
     const response = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_API_KEY}`
@@ -6,12 +8,10 @@ const getGeolocation = async (address, i) => {
     const jsonData = await response.json();
     if (jsonData && jsonData.results.length > 0) {
       const { lat, lng } = jsonData.results[0].geometry.location;
-      let home = {};
-      const pantries = [{}];
       if (i === 'home') {
         Object.assign(home, { lat: lat, lng: lng });
       } else {
-        pantries.push({ pantries: { lat, lng } });
+        Object.assign(pantries, { lat: lat, lng: lng });
       }
       return { home, pantries };
     }
@@ -68,7 +68,7 @@ export default getGeolocation;
 //   // Add more destinations as needed
 // ];
 
-// const MapComponent = withGoogleMap(({ homeLocation, destinations }) => {
+// export const MapComponent = withGoogleMap(({ homeLocation, destinations }) => {
 //   const handleDistanceMatrix = (response, status) => {
 //     if (status === 'OK') {
 //       const rows = response.rows;
@@ -94,6 +94,7 @@ export default getGeolocation;
 //       });
 //     }
 //   };
+// });
 
 //   return (
 //     <GoogleMap
