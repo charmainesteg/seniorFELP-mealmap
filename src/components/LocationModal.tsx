@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -26,12 +26,12 @@ const LocationModal = () => {
   const [show, setShow] = useState(false);
   const [geoAddress, setGeoAddress] = useState<google.maps.LatLngLiteral>();
   const [geoPantries, setGeoPantries] = useState<google.maps.LatLngLiteral[]>([]);
-  const [map, setMapOptions] = useState({
-    center: {
-      lat: 33.7488, lng: -84.3877
-    },
-    zoom: 10
-  });
+  // const [map, setMapOptions] = useState({
+  //   center: {
+  //     lat: 33.7488, lng: -84.3877
+  //   },
+  //   zoom: 10
+  // });
   const [address, setAddress] = useState('');
   const [addresses, setAddresses] = useState([
     { label: 'Address 1', type: 'text', placeholder: 'Address 1', value: '' },
@@ -85,11 +85,10 @@ const LocationModal = () => {
       }
     }
     setAddress(addressString.trim());
-    console.log(addressString.trim());
+
     getGeolocation(addressString.trim(), 'home')
       .then((geolocation) => {
         if (geolocation && geolocation.home) {
-          console.log(geolocation.home);
           setGeoAddress(geolocation.home as google.maps.LatLngLiteral | undefined);
         }
       });
@@ -102,10 +101,9 @@ const LocationModal = () => {
           }
         });
     });
-    Promise.all(pantryLocations).then((values) => {
-      console.log(values, Array.isArray(values));
-      setGeoPantries(values.filter((item): item is google.maps.LatLngLiteral => item !== undefined));
 
+    Promise.all(pantryLocations).then((values) => {
+      setGeoPantries(values.filter((item): item is google.maps.LatLngLiteral => item !== undefined));
     });
 
   };
@@ -131,12 +129,17 @@ const LocationModal = () => {
   //     //   }
   //     // });
   //   }
-
   // }, [isLoaded]);
 
-  const isAnyAddressEmpty = addresses.filter(address => address.value === ''
-    && address.label !== 'Address 2').length > 0;
-  console.log(geoAddress);
+  // const isEmpty = () => {
+  //   console.log(addresses);
+  //   return addresses.filter(address => address.value === '' && address.label !== 'Address 2').length > 0;
+  // };
+
+  const isEmpty = useMemo(() => {
+    return addresses.filter((address) => address.value === '' && address.label !== 'Address 2').length > 0;
+  }, [addresses]);
+
   return (
     <>
       <Button variant="primary" onClick={toggleModal} className="pantry-header-btn">
@@ -151,7 +154,7 @@ const LocationModal = () => {
             <div className="col-6 map-col">
               {isLoaded &&
                 <MapComponent
-                  homeLocation={geoAddress ? geoAddress : { lat: 33.7488, lng: -84.3877 }}
+                  homeLocation={geoAddress ? geoAddress : undefined}
                   destinations={geoPantries}
                   containerElement={mapStyles}
                   mapElement={<div style={{ height: '100%' }} />}
@@ -184,11 +187,11 @@ const LocationModal = () => {
           <Button variant="secondary" onClick={toggleModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleLocate} disabled={isAnyAddressEmpty}>
+          <Button variant="primary" onClick={handleLocate} disabled={isEmpty}>
             Locate
           </Button>
         </Modal.Footer>
-      </Modal >
+      </Modal>
     </>
   );
 };

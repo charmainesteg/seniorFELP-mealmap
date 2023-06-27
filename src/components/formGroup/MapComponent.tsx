@@ -8,6 +8,10 @@ type MapComponentProps = {
 };
 
 const MapComponent = (({ homeLocation, destinations, containerElement, mapElement }: MapComponentProps) => {
+  const defaultCenter = {
+    lat: 33.7488,
+    lng: -84.3877
+  };
   const handleDistanceMatrix = (
     response: google.maps.DistanceMatrixResponse | null,
     status: google.maps.DistanceMatrixStatus) => {
@@ -26,9 +30,10 @@ const MapComponent = (({ homeLocation, destinations, containerElement, mapElemen
   };
   return (
     <GoogleMap
-      center={homeLocation}
-      zoom={12}
+      center={homeLocation ? homeLocation : defaultCenter}
+      zoom={homeLocation ? 11 : 12}
       mapContainerStyle={containerElement}>
+      {<MarkerF position={homeLocation ? homeLocation : defaultCenter} />}
       {destinations.map((destination, index) => (
         destination?.lat && destination?.lng ? (
           <Marker key={index} position={destination} />
