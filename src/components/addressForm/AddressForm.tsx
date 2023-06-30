@@ -1,25 +1,37 @@
-import React from "react";
+import {ChangeEvent} from "react";
 import { Form } from "react-bootstrap";
+import StateDropdown from "./StatesDropdown";
 
-export type AddressFormProps  = {
-    label: string;
-    type: string;
-    placeholder: string;
+export type FormControlChangeEvent = 
+    ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+
+export interface AddressFormProps {
+    label?: string;
+    type?: string;
+    placeholder?: string;
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (e: FormControlChangeEvent) => void;
 }
 
-const AddressForm = (props: AddressFormProps) => {
+const AddressForm = ({
+    label,
+    type,
+    placeholder,
+    value,
+    onChange,
+  }: AddressFormProps) => {
     return (
-        <Form.Group className="mb-3" controlId={`LocationForm.${props.label}`}>
-            <Form.Label className="form-label">{props.label}</Form.Label>
-              <Form.Control
-                type={props.type}
-                placeholder={props.placeholder}
-                autoFocus
-                value={props.value}
-                onChange={props.onChange}
-              />
+        <Form.Group className="mb-3" controlId={`LocationForm.${label}`}>
+            <Form.Label className="form-label">{label}</Form.Label>
+            {type === "select" ? (
+                <StateDropdown value={value} onChange={onChange} />
+            ) : (<Form.Control
+            type={type}
+            placeholder={placeholder}
+            autoFocus
+            value={value}
+            onChange={onChange}
+          />) }
             </Form.Group>
     );
 };
