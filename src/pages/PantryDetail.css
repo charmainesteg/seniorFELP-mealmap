@@ -25,7 +25,7 @@
     border-radius: 5px; 
 }
 
-.row{
+ .pantry-detail-row{ 
     display: flex;
     justify-content: center;
     align-items: center;
