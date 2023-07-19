@@ -1,8 +1,35 @@
-.googlemap {
-    width: 550px;
-    height: 500px;
-}
-
 .modal-header, .form-label{
     color: #093266;
+}
+
+.pantry-location-box{
+    margin: 15px 0;
+    background-color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: solid 1px #093266;
+}
+
+.nearest-pantry-text{
+    color: #093266;
+    font-weight: 600;
+}
+
+.nearest-pantry-link{
+    text-decoration: none;
+    color:#72bf44;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.modal-pantry-location,.modal-pantry-title{
+    color: #093266;
+    font-size: 16px;
+    margin: 0;
+}
+
+.location-modal-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

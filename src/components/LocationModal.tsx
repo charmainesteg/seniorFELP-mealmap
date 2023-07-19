@@ -10,9 +10,7 @@ import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 const LocationModal = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [show, setShow] = useState(false);
-  const toggleModal = () => {
-    setShow(!show);
-  };
+ 
 
   const [map, setMapOptions] = useState({
     center: {
@@ -42,7 +40,14 @@ const LocationModal = () => {
     { label: "Zip Code", type: "text", placeholder: "Zip Code", value: "" },
   ]);
 
-  const [nearestPantry, setNearestPantry] = useState({title: "", index: 0, coordinates: {latitude: 0, longitude: 0}})
+  const [nearestPantry, setNearestPantry] = useState({
+    title: "",
+    index: 0,
+    location: "",
+    coordinates: { latitude: 0, longitude: 0 },
+  });
+
+  const [isLocated, setIsLocated] = useState(false);
 
   const handleAddressChange = (index: number, e: FormControlChangeEvent) => {
     const updateAddresses = [...addresses];
@@ -63,6 +68,7 @@ const LocationModal = () => {
     const pantryCoordinates: {
       title: string;
       index: number;
+      location: string;
       coordinates: { latitude: number; longitude: number };
     }[] = [];
 
@@ -99,6 +105,7 @@ const LocationModal = () => {
               const pantryCoordinate = {
                 title: pantry.title,
                 index: pantry.id,
+                location: pantry.location,
                 coordinates: {
                   latitude: pantryLocation.lat,
                   longitude: pantryLocation.lng,
@@ -142,7 +149,7 @@ const LocationModal = () => {
         service.getDistanceMatrix(request, (response, status) => {
           if (response && status === google.maps.DistanceMatrixStatus.OK) {
             const elements = response.rows[0].elements;
-            console.log(elements)
+            console.log(elements);
 
             let nearestPantryIndex = -1;
             let minDistance = Number.MAX_VALUE;
@@ -152,11 +159,11 @@ const LocationModal = () => {
               if (distance < minDistance) {
                 minDistance = distance;
                 nearestPantryIndex = index;
-              } 
+              }
             });
             if (nearestPantryIndex !== -1) {
               const nearestPantry = pantryCoordinates[nearestPantryIndex];
-              setNearestPantry(nearestPantry)
+              setNearestPantry(nearestPantry);
               console.log(
                 "Nearest Pantry: ",
                 nearestPantry.title,
@@ -175,28 +182,39 @@ const LocationModal = () => {
     } catch (error) {
       console.error("Geocoding error:", error);
     }
+
+    setIsLocated(true)
   };
 
   //change map location
   useEffect(() => {
     if (isLoaded) {
-        if (nearestPantry.title !=="") {
-          const lat = nearestPantry.coordinates.latitude
-          const lng = nearestPantry.coordinates.longitude
-          const mapOptions = {
-            center: { lat, lng },
-            zoom: 18,
-          };
-          setMapOptions(mapOptions);
+      if (nearestPantry.title !== "") {
+        const lat = nearestPantry.coordinates.latitude;
+        const lng = nearestPantry.coordinates.longitude;
+        const mapOptions = {
+          center: { lat, lng },
+          zoom: 18,
         };
+        setMapOptions(mapOptions);
+      }
     }
   }, [isLoaded, nearestPantry]);
 
-
-
   const isEmpty = useMemo(() => {
-    return addresses.filter((address) => address.value === "" && address.label !== "Address 2").length > 0;
-  }, [addresses])
+    return (
+      addresses.filter(
+        (address) => address.value === "" && address.label !== "Address 2"
+      ).length > 0
+    );
+  }, [addresses]);
+
+  const toggleModal = () => {
+    setShow(!show);
+    if (!show){
+        setAddress("")
+    }
+};
 
   return (
     <>
@@ -210,19 +228,11 @@ const LocationModal = () => {
 
       <Modal show={show} onHide={toggleModal} size="xl" className="modal">
         <Modal.Header closeButton className="modal-header">
-          <Modal.Title>Find Pantries Nearby </Modal.Title>
+          <Modal.Title as="h1">Find Pantries Nearby </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
-          <div className="row">
+          <div className="row location-modal-row">
             <div className="col-6 map-col">
-            {nearestPantry ? (
-                <div>
-                    <h2>NearestPantry: </h2>
-                    <a href={`/pantries/${nearestPantry.index}`}>{nearestPantry.title}</a>
-                </div>
-              ): (
-                <p>No Nearest pantry found</p>
-              )}
               {isLoaded && (
                 <GoogleMap
                   mapContainerStyle={mapStyles}
@@ -246,6 +256,24 @@ const LocationModal = () => {
                   />
                 ))}
               </Form>
+              {isLocated && (
+                <div className="pantry-location-box">
+                {nearestPantry ? (
+                  <div>
+                    <h4 className="nearest-pantry-text">Nearest Pantry </h4>
+                    <p className="modal-pantry-title">{nearestPantry.title}</p>
+                    <p className="modal-pantry-location">{nearestPantry.location}</p>
+                    <a
+                      className="nearest-pantry-link"
+                      href={`/pantries/${nearestPantry.index}`}
+                    >Click here for more info
+                    </a>
+                  </div>
+                ) : (
+                  <p>No Nearest pantry found</p>
+                )}
+              </div>
+              )}
             </div>
           </div>
         </Modal.Body>
