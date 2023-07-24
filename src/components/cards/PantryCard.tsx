@@ -14,7 +14,7 @@ export default function PantryCard(props: PantryProps) {
   return (
     <Card style={{ width: "22rem" }} key={props.id}>
       <Card.Img variant="top" src={props.image} />
-      <Card.Body>
+      <Card.Body className="pantry-card-body">
         <Card.Title>
           {" "}
           <Link to={`/pantries/${props.id}`}> {props.title}</Link>{" "}

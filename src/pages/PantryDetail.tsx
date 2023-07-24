@@ -22,7 +22,7 @@ const PantryDetail = () => {
     <div className="pantry-detail-container">
       <Button onClick={goBack}>Back</Button>
       <div className="container pantry-detail" key={pantry.id}>
-        <div className="row">
+        <div className="row pantry-detail-row">
           <div className="col-md-5">
             <div className="box">
               <h1 className="pantry-detail-title">{pantry.title}</h1>
