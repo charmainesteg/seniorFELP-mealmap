@@ -18,15 +18,32 @@
     padding: 0 0 0 6rem;
 }
 
+.resource-cards{
+    padding: 0rem 12rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
+    grid-gap: 3em;
+    max-height: 40%;
+    justify-items: center;
+    justify-content: space-evenly;
+}
+
 .resource-card{
     margin: 1rem;
 }
 
+.resource-card-body{
+    color: #093266;
+    display: flex;
+    flex-direction: column;
+}
+
 .resource-banner{
     margin: 1rem;
-    padding: 5rem;
+    padding: 1rem;
     background-color: #f3f2ee;
     box-shadow: 0 0 5px #eeece7;
+    height: 210px;
 }
 
 .fa-utensils, .fa-bread-slice, .fa-seedling{
@@ -68,7 +85,7 @@
 .banner-header{
     text-align: center;
     color: #093266;
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
 }
 
 .additional-resources{
@@ -96,4 +113,30 @@
 .add-resource-item .card-header{
     color: #fff;
     background-color: #093266;
+}
+.intro-paragraph{
+    padding: 2rem 12rem;
+}
+.intro-paragraph h2 {
+    color:#72bf44;
+}
+
+.intro-paragraph p{
+    color:#093266;
+}
+
+.card-header-1{
+    background-color: rgb(240,180,26, .2);
+}
+
+.card-header-2{
+    background-color:rgb(231,56,56, .2);
+}
+
+.card-header-3{
+    background-color: rgb(100,123,188, .2);
+}
+
+.add-resource-img{
+    border-radius: 6px;
 }

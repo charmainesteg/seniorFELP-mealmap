@@ -17,7 +17,7 @@
  height: 200px;
 }
 
-.card .card-body{
+.pantry-card-body{
     color: #093266;
     display: flex;
     flex-direction: column;
