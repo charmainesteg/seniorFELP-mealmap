@@ -13,7 +13,7 @@ function SearchPantry() {
 
   return (
     <div className="search-pantry-div">
-      <Form className="d-flex search-form">
+      <Form className="search-form">
         <Form.Control
           type="search"
           placeholder="Search..."
@@ -22,11 +22,11 @@ function SearchPantry() {
           onChange={inputHandler}
         />
         {!inputText && <div className="looking-glass">
-        <i className="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>}
       </Form>
       <div className="search-list">
-        {inputText && <SearchList input={inputText}/>}
+        {inputText && <SearchList input={inputText} />}
       </div>
     </div>
   );
