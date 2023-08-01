@@ -5,7 +5,6 @@
 .hero-header {
 height: 500px;
 width: 100%;
-padding-top: 100px;
 color: white;
 background: linear-gradient(270deg,rgba(6,52,107,0)0,#093266 81%), url("../assets/images/homepageimg.jpeg");
 background-position: 80%;
@@ -14,22 +13,18 @@ position: relative;
 
 .hero-header .welcome-text{
     font-weight: 600;
-    padding: 0 0 0 6rem;
 }
 
 .hero-header .tagline{
     color:#99d6ff;
     font-weight: 400;
-    padding: 0 0 0 6rem;
-    width: 420px;
-    word-wrap: break-word;
     font-size: medium;
 }
 .home-btn-div{
-    display: flex;
-    height: 390px;
-    justify-content: center;
-    align-items: center;
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translate(-50%, -20px);
 }
 .hero-header .home-pantry-btn{
     font-weight: 500;
@@ -55,4 +50,11 @@ position: relative;
 .home-pantries{
     background: #f3f2ee;
     margin: 1rem 1rem 0 1rem;
+}
+
+.home-wrapper{
+    width: 50%;
+    position: relative;
+    top: 30%;
+    left: 10%;
 }

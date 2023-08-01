@@ -19,7 +19,7 @@
     padding: 0 0 0 6rem;
 }
 .about-text{
-    padding: 2rem 12rem ;
+    padding: 2% 12%;
 }
 .about-text h1{
     color:#093266;
@@ -61,6 +61,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2%;
 }
 
 .animate{
@@ -70,4 +71,8 @@
 
 .no-margin{
     margin-top: 0;
+}
+
+.about-quote{
+    font-weight: 500;
 }

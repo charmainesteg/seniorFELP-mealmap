@@ -19,6 +19,10 @@
     font-weight: 500;
 }
 
+.footer-icons{
+    margin-bottom: 5%;
+}
+
 .footer-icons i{
     padding: 0.5rem;
     background: #fff;

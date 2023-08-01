@@ -84,10 +84,10 @@ const About = () => {
             <div className="about-box" ref={column1ref}>
               <h3>Mission</h3>
               <p>
-                To provide individuals with the tools and resources they need to
-                combat hunger and food insecurity, fostering community
+                To provide individuals with the resources they need to
+                combat food insecurity, fostering community
                 well-being and empowering users to access essential food
-                resources in their local neighborhoods.
+                resources in their neighborhoods.
               </p>
             </div>
           </div>
@@ -105,8 +105,7 @@ const About = () => {
         <div className='container-wrapper no-margin red'>
                 <div className="container">
                     <div className="row gx-20">
-                        <p>In sed orci arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam id luctus lorem. Praesent nisl risus, faucibus eu suscipit in, ornare nec enim. Curabitur vitae suscipit enim, nec condimentum magna. Fusce nec ligula risus. Donec sagittis at lorem
-                            sed hendrerit. In tristique volutpat nibh, in porta tortor ultricies at.</p>
+                        <p className="about-quote">"MealMap has been a game-changer for me, effortlessly locating nearby food pantries and providing real-time updates, making it an indispensable tool for those facing food insecurity." - FoodFinder2023</p>
                     </div>
                 </div>
             </div>

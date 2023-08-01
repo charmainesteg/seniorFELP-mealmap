@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="row">
                     <div className="col-md-6 col-lg-5 col-12 ft-1">
                         <a className="navbar-brand" href="/"><h3><span>MEAL</span> Map</h3></a>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo unde nisi vero impedit vitae, ad minima quaerat doloribus veniam odio iure inventore, nobis necessitatibus corrupti beatae. Autem ducimus excepturi voluptates!</p>
+                        <p>Your Compass to Nearby Food Pantries. Find the closest food resources with real-time updates, making hunger relief accessible to all.</p>
                         <div className="footer-icons">
                             <i className="fa-brands fa-facebook"></i>
                             <i className="fa-brands fa-square-twitter"></i>

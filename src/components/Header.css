@@ -43,3 +43,9 @@
     border: solid 1px rgb(238, 56, 56); 
     color: #ffffff;   
 }
+
+@media only screen and (max-width: 600px) {
+    .navbar-container{
+        padding: 1rem 0;
+    }
+}
